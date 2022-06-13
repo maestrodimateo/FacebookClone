@@ -46,11 +46,35 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         actions: [
-          Padding(
+          Container(
+            decoration: BoxDecoration(boxShadow: [
+              BoxShadow(
+                  color: Colors.blue,
+                  blurRadius: 25,
+                  offset: Offset(-5, 0),
+                  spreadRadius: -18),
+            ]),
             padding: const EdgeInsets.only(right: 20),
-            child: Image(
-              image: AssetImage('assets/icons/messenger.png'),
-              width: 30,
+            child: Stack(
+              alignment: AlignmentDirectional.center,
+              children: [
+                Image(
+                  image: AssetImage('assets/icons/messenger.png'),
+                  width: 30,
+                ),
+                Positioned(
+                  left: 18,
+                  top: 12,
+                  child: CircleAvatar(
+                    backgroundColor: Colors.white,
+                    radius: 5,
+                    child: CircleAvatar(
+                      backgroundColor: Colors.red,
+                      radius: 3,
+                    ),
+                  ),
+                )
+              ],
             ),
           )
         ],
@@ -178,19 +202,167 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
             ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Column(
+                children: [
+                  Container(
+                    height: 180,
+                    decoration: BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.shade600,
+                          offset: Offset(0, 70),
+                          blurRadius: 30,
+                          spreadRadius: -70,
+                        )
+                      ],
+                      image: DecorationImage(
+                          image: AssetImage('assets/images/mountains.jpg'),
+                          fit: BoxFit.cover),
+                      borderRadius: BorderRadius.all(Radius.circular(15)),
+                    ),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.only(top: 20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            Stack(
+                              clipBehavior: Clip.none,
+                              children: [
+                                CircleAvatar(
+                                  radius: 12,
+                                  backgroundColor: Colors.blue,
+                                  child: Icon(
+                                    Icons.thumb_up_alt,
+                                    color: Colors.white,
+                                    size: 12,
+                                  ),
+                                ),
+                                Positioned(
+                                  left: 20,
+                                  bottom: -2,
+                                  child: CircleAvatar(
+                                    backgroundColor: Colors.white,
+                                    radius: 14,
+                                    child: CircleAvatar(
+                                      radius: 12,
+                                      backgroundColor: Colors.red,
+                                      child: Icon(
+                                        Icons.favorite,
+                                        color: Colors.white,
+                                        size: 12,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(width: 30),
+                            Text('400')
+                          ],
+                        ),
+                        Text('122 Comments')
+                      ],
+                    ),
+                  ),
+                  Container(margin: EdgeInsets.only(top: 15), child: Divider()),
+                  Container(
+                    margin: EdgeInsets.only(top: 15),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Row(
+                          children: [
+                            Icon(Icons.thumb_up_alt_outlined),
+                            SizedBox(width: 10),
+                            Text('Like')
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            Icon(LucideIcons.messageSquare),
+                            SizedBox(width: 10),
+                            Text('Comment')
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
             Container(
-              height: 200,
-              margin: EdgeInsets.symmetric(horizontal: 20),
-              decoration: BoxDecoration(
-                image: DecorationImage(image: AssetImage('assets/images/mountains.jpg'), fit: BoxFit.cover),
-                  borderRadius: BorderRadius.all(Radius.circular(15)),
-                  color: Colors.amber),
+              padding: EdgeInsets.symmetric(vertical: 30, horizontal: 20),
+              width: double.infinity,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Stack(
+                    children: [
+                      CircleAvatar(
+                          radius: 15,
+                          backgroundImage:
+                              AssetImage('assets/images/profil.jpg')),
+                      Positioned(
+                        bottom: 0,
+                        left: 18,
+                        child: CircleAvatar(
+                          backgroundColor: Colors.white,
+                          radius: 7,
+                          child: Icon(
+                            Icons.people,
+                            size: 10,
+                            color: Colors.black,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(width: 10),
+                  Container(
+                    width: 250,
+                    child: Wrap(
+                      children: [
+                        RichText(
+                            text: TextSpan(
+                                style: TextStyle(color: Colors.black),
+                                children: [
+                              TextSpan(
+                                text: 'Anita Michaels ',
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
+                              TextSpan(text: 'had a Photoshoot session at  '),
+                              TextSpan(
+                                text: 'Kings Lounge',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, height: 1.5),
+                              ),
+                            ]))
+                      ],
+                    ),
+                  )
+                ],
+              ),
             )
           ],
         ),
       )),
 
+      floatingActionButton: Container(
+        padding: EdgeInsets.only(bottom: 20),
+        child: FloatingActionButton(
+            backgroundColor: Color(0xFF395a9a),
+            child: Icon(Icons.add, size: 35),
+            onPressed: (() => {})),
+      ),
       bottomNavigationBar: BottomNavigationBar(
+          selectedItemColor: Color(0xFF395a9a),
+          onTap: ((index) => {print(index)}),
           type: BottomNavigationBarType.fixed,
           elevation: 0,
           items: [
@@ -200,9 +372,8 @@ class _HomePageState extends State<HomePage> {
             BottomNavigationBarItem(icon: Icon(LucideIcons.bell), label: ''),
             BottomNavigationBarItem(
                 icon: CircleAvatar(
-                  backgroundImage: AssetImage('assets/images/profil.jpg'),
-                  radius: 15,
-                ),
+                    backgroundImage: AssetImage('assets/images/profil.jpg'),
+                    radius: 15),
                 label: '')
           ]),
     );
