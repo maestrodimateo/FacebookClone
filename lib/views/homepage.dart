@@ -1,3 +1,4 @@
+import 'package:facebookclone/widgets/Post.dart';
 import 'package:facebookclone/widgets/Story.dart';
 import 'package:flutter/material.dart';
 import 'package:lucide_icons/lucide_icons.dart';
@@ -14,8 +15,6 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.transparent,
         leading: Icon(
           Icons.camera_alt,
           color: Colors.black,
@@ -206,23 +205,7 @@ class _HomePageState extends State<HomePage> {
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Column(
                 children: [
-                  Container(
-                    height: 180,
-                    decoration: BoxDecoration(
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.shade600,
-                          offset: Offset(0, 70),
-                          blurRadius: 30,
-                          spreadRadius: -70,
-                        )
-                      ],
-                      image: DecorationImage(
-                          image: AssetImage('assets/images/mountains.jpg'),
-                          fit: BoxFit.cover),
-                      borderRadius: BorderRadius.all(Radius.circular(15)),
-                    ),
-                  ),
+                  Post(),
                   Container(
                     padding: const EdgeInsets.only(top: 20),
                     child: Row(
@@ -329,9 +312,9 @@ class _HomePageState extends State<HomePage> {
                     child: Wrap(
                       children: [
                         RichText(
-                            text: TextSpan(
-                                style: TextStyle(color: Colors.black),
-                                children: [
+                          text: TextSpan(
+                            style: TextStyle(color: Colors.black),
+                            children: [
                               TextSpan(
                                 text: 'Anita Michaels ',
                                 style: TextStyle(fontWeight: FontWeight.bold),
@@ -342,7 +325,9 @@ class _HomePageState extends State<HomePage> {
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold, height: 1.5),
                               ),
-                            ]))
+                            ],
+                          ),
+                        )
                       ],
                     ),
                   )
@@ -379,3 +364,4 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+

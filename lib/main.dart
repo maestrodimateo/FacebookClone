@@ -1,4 +1,5 @@
-import 'package:facebookclone/views/homepage.dart';
+import 'package:facebookclone/views/feed.dart';
+//import 'package:facebookclone/views/homepage.dart';
 import 'package:flutter/material.dart';
 
 void main(List<String> args) {
@@ -11,8 +12,13 @@ class FacebookClone extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+        appBarTheme:
+            AppBarTheme(elevation: 0, backgroundColor: Colors.transparent),
+      ),
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+//      home: HomePage(),
+      home: Feed(),
     );
   }
 }
